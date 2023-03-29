@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: DMSans_Regular;
+    src: url('@/assets/fonts/DM_Sans/DMSans-Regular.ttf');
+    }
+@font-face {
+        font-family: DMSans_Medium;
+        src: url('@/assets/fonts/DM_Sans/DMSans-Medium.ttf');
+        }
+@font-face {
+        font-family: DMSans_Bold;
+        src: url('@/assets/fonts/DM_Sans/DMSans-Bold.ttf');
+    }
+*{
+    font-family: DMSans_Regular;
+
+}
+:root {
+    --primary: #3d3d3d;
+    --secondary: #084c61;
+    --secondaryblue: #177e89;
+    --secondaryyellow: #ffc857;
+    --primarydark: #323031; 
+  }
