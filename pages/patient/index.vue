@@ -9,7 +9,15 @@
         <nuxt-link to="/addAppointment" class="text-md text-white p-2 rounded border bg-green-500 hover:text-black">+ Add</nuxt-link>
     </div>
       <AppointmentsTable v-else :appointments="appointments" class="mb-20"/>
-    <div v-if="loading">
+      <div  class="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1">
+      <div v-for="(appoint,index) in appointments" :key="index" class="bg-blue-500 p-5 text-white gap-4 rounded-md flex flex-col justify-center hover:-mt-3 duration-300">
+        <label class="text-xs text-gray-300">Appointment {{ index + 1 }}</label>
+        <p class="text-xl mmedium">Dr. {{ appoint.doctor.firstname }} {{ appoint.doctor.lastname }}</p>
+        <p>Time: <span v-for="(my,index) in appoint.start" :key="index">{{ my }}.</span></p>
+        <div class="flex flex-row gap-2"><button class="p-2 bg-red-500 rounded-md text-white">Delete</button><button class="text-white-700">View</button></div>
+      </div>
+    </div>
+      <div v-if="loading">
       <div class="bg-gray-200 animate-pulse w-full h-5"></div>
       <div class="bg-gray-300 animate-pulse w-full h-5"></div>
       <div class="bg-gray-200 animate-pulse w-full h-5"></div>
