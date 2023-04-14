@@ -120,8 +120,8 @@
             <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600">{{ patient.doctor.firstname }} {{ patient.doctor.lastname }}</td>
             <td class="p-2 w-fit pt-3 text-sm  border-t border-gray-100 text-gray-600"><span v-for="(my,index) in patient.start" :key="index">{{ my }}/</span></td>
             <td class="p-2 pt-3 text-sm  border-t border-gray-100 text-gray-600">{{ patient.doctor.mobile}}</td>
-            <td class="p-2 pt-3 text-sm  border-t border-gray-100 text-gray-600"><span v-for="(my,index) in patient.start" :key="index">{{ my }}/</span></td>
-            <td class="p-2 pt-3 text-sm  border-t border-gray-100 text-gray-600"><span v-for="(my,index) in patient.start" :key="index">{{ my }}/</span></td>
+            <td class="p-2 pt-3 text-sm  border-t border-gray-100 text-gray-600"><span>{{ patient.start }}</span></td>
+            <td class="p-2 pt-3 text-sm  border-t border-gray-100 text-gray-600"><span>{{ patient.end }}</span></td>
             <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600"><label class="bg-green-200 text-sm rounded-3xl border w-fit h-fit text-green-500 px-2 py-1 state">{{ patient.status }} </label></td>
             <td class="border-t px-2 py-1 text-left">
                 <button class="btn text-lg bg-white text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots-vertical" width="19" height="19" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
