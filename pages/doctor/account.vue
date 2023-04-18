@@ -35,23 +35,23 @@
       
       <div class="flex flex-row gap-1 w-full">
           <div class="w-1/2">
-              <input type="text" v-model="patient.firstname" name="firstname" id="" placeholder="Firstname" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
+              <input type="text" v-model="doctor.firstname" name="firstname" id="" placeholder="Firstname" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
               <p v-if="this.errors.firstname" class="text-sm text-red-600 text-left mb-2">*{{this.errors.firstname}}</p>
           </div>
           <div class="w-1/2">
-              <input type="text" v-model="patient.lastname" name="lastname" id="" placeholder="Lastname" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
+              <input type="text" v-model="doctor.lastname" name="lastname" id="" placeholder="Lastname" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
               <p v-if="this.errors.lastname" class="text-sm text-red-600 text-left mb-2">*{{this.errors.lastname}}</p>
           </div>
       </div>
-        <input type="email" v-model="patient.email" name="email" id="" placeholder="Email" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
+        <input type="email" v-model="doctor.email" name="email" id="" placeholder="Email" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
         <p v-if="this.errors.email" class="text-sm text-red-600 text-left mb-2">*{{this.errors.email}}</p>
-        <input type="text" v-model="patient.mobile" name="mobile" id="" placeholder="Mobile" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
+        <input type="text" v-model="doctor.mobile" name="mobile" id="" placeholder="Mobile" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
         <p v-if="this.errors.mobile" class="text-sm text-red-600 text-left mb-2">*{{this.errors.mobile}}</p>
-        <textarea v-model="patient.address" name="address" id="" placeholder="Address" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] "></textarea>
+        <textarea v-model="doctor.address" name="address" id="" placeholder="Address" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] "></textarea>
         <p v-if="this.errors.address" class="text-sm text-red-600 text-left mb-2">*{{this.errors.adress}}</p>
-        <input type="password" v-model="patient.password" name="password" id="" placeholder="Password" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
+        <input type="password" v-model="doctor.password" name="password" id="" placeholder="Password" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
         <p v-if="this.errors.password" class="text-sm text-red-600 text-left mb-2">*{{this.errors.password}}</p>
-        <input type="password" v-model="patient.Confirmpassword" name="Confirmpassword" id="" placeholder="Re-enter Password" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
+        <input type="password" v-model="doctor.Confirmpassword" name="Confirmpassword" id="" placeholder="Re-enter Password" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
         <p v-if="this.errors.password" class="text-sm text-red-600 text-left mb-2">*{{this.errors.Confirmpassword}}</p>
         <button @click="handleSubmit()" class="py-2 bg-[var(--primary)] text-white font-semibold rounded w-full">Update</button>
         
@@ -130,33 +130,7 @@
 </div>
 
       <div>
-        <form @submit.prevent="handleSubmit()" class="mt-2 p-5 flex flex-col rounded">
-        <h1 class="text-lg mb-2">Personal information</h1>
-      <p class="py-2 px-4 bg-red-200 text-red-400 border border-red-400 rounded mb-2 w-full" v-if="this.errors.ERR">Error: {{this.errors.ERR}}</p>
-      
-      <div class="flex flex-row gap-1 w-full">
-          <div class="w-1/2">
-              <input type="text" v-model="patient.firstname" name="firstname" id="" placeholder="Firstname" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-              <p v-if="this.errors.firstname" class="text-sm text-red-600 text-left mb-2">*{{this.errors.firstname}}</p>
-          </div>
-          <div class="w-1/2">
-              <input type="text" v-model="patient.lastname" name="lastname" id="" placeholder="Lastname" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-              <p v-if="this.errors.lastname" class="text-sm text-red-600 text-left mb-2">*{{this.errors.lastname}}</p>
-          </div>
-      </div>
-        <input type="email" v-model="patient.email" name="email" id="" placeholder="Email" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-        <p v-if="this.errors.email" class="text-sm text-red-600 text-left mb-2">*{{this.errors.email}}</p>
-        <input type="text" v-model="patient.mobile" name="mobile" id="" placeholder="Mobile" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-        <p v-if="this.errors.mobile" class="text-sm text-red-600 text-left mb-2">*{{this.errors.mobile}}</p>
-        <textarea v-model="patient.address" name="address" id="" placeholder="Address" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] "></textarea>
-        <p v-if="this.errors.address" class="text-sm text-red-600 text-left mb-2">*{{this.errors.adress}}</p>
-        <input type="password" v-model="patient.password" name="password" id="" placeholder="Password" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-        <p v-if="this.errors.password" class="text-sm text-red-600 text-left mb-2">*{{this.errors.password}}</p>
-        <input type="password" v-model="patient.Confirmpassword" name="Confirmpassword" id="" placeholder="Re-enter Password" class="py-2 px-4 border-b mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-        <p v-if="this.errors.password" class="text-sm text-red-600 text-left mb-2">*{{this.errors.Confirmpassword}}</p>
-        <button @click="handleSubmit()" class="py-2 bg-[var(--primary)] text-white font-semibold rounded w-full">Update</button>
-        
-    </form>
+
       </div>
       <!-- <Account/> -->
     </div>
@@ -170,7 +144,7 @@ import Account from '../../components/extras/Account.vue';
   components:{ Header, Account },
   data(){
     return{
-            patient:[{
+            doctor:[{
                 firstname: "",
           lastname: "",
           email: "",
@@ -186,28 +160,28 @@ import Account from '../../components/extras/Account.vue';
   methods:{
         async handleSubmit(){
             this.errors = {};
-            if(!this.patient.firstname){
+            if(!this.doctor.firstname){
                 this.errors.firstname = "Firstname is required";
             }
-            if(!this.patient.email){
+            if(!this.doctor.email){
                 this.errors.lastname = "Lastname is required";
             }
-            if(!this.patient.email){
+            if(!this.doctor.email){
                 this.errors.email = "Email is required";
             }
-            if(!this.patient.mobile){
+            if(!this.doctor.mobile){
                 this.errors.mobile = "Mobile number is required";
             }
-            if(!this.patient.address){
+            if(!this.doctor.address){
                 this.errors.address = "Address is required";
             }
-            if(!this.patient.password){
+            if(!this.doctor.password){
                 this.errors.password = "Enter password";
             } 
             if(!(this.password === this.Confirmpassword)){
                 this.errors.Confirmpassword = "Passwords do not match";
             }
-            if(!this.patient.Confirmpassword){
+            if(!this.doctor.Confirmpassword){
                 this.errors.Confirmpassword = "Re-enter password";
             }
            
@@ -216,23 +190,22 @@ import Account from '../../components/extras/Account.vue';
         // make API call or submit form data here
         const token = localStorage.token;
         try{
-        await axios.put('http://localhost:8080/v1/update/patients/'+this.patient.id,{
-        firstName:this.patient.firstName,
-        lastName:this.patient.lastName,
-        email:this.patient.email,
-        mobile:this.patient.mobile,
-        address:this.patient.address,
-        password :this.patient.password,
-        role :"Patient"
+        await axios.put('http://localhost:8080/v1/doctor/update/'+this.doctor.id,{
+        firstName:this.doctor.firstName,
+        lastName:this.doctor.lastName,
+        email:this.doctor.email,
+        mobile:this.doctor.mobile,
+        address:this.doctor.address,
+        password :this.doctor.password,
         },{
         headers: {'Content-Type': 'application/json',
             Authorization : 'Bearer ' + token,
             'Access-Control-Allow-Origin': '*'}
       }).then((response) =>{
           const data = response.data;
-          this.response = data;
+        //   this.response = data;
           console.log(response);
-          this.$router.push('./login')
+        //   this.$router.push('./login')
           // if(this.response === "User Not Found"){
           //   this.errors.failed = "Wrong Login details.";
           // }else{
@@ -247,10 +220,10 @@ this.errors.failed = "Sorry, an error occured!";
         console.log("Form submitted successfully");
       }
         },
-        async fetchPatient(){
-      // console.log("Fetching Patient Data....");
+        async fetchDoctor(){
+      // console.log("Fetching doctor Data....");
       this.loading = true;
-      const URL = "http://localhost:8080/v1/patients";
+      const URL = "http://localhost:8080/v1/doctors";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       // console.log(token);
@@ -260,10 +233,10 @@ this.errors.failed = "Sorry, an error occured!";
             'Access-Control-Allow-Origin': '*'}
       }).then((res) =>
        {
-        this.patient = res.data;
-        console.log(this.patient);
-        console.log(typeof(this.patient))
-        console.log("Fetching  Patient Data Completed...");
+        this.doctor = res.data;
+        console.log(this.doctor);
+        console.log(typeof(this.doctor))
+        console.log("Fetching  Doctors Data Completed...");
       }) .catch(error => {
         console.log(error.code)
         this.error=error.code;
@@ -274,7 +247,7 @@ this.errors.failed = "Sorry, an error occured!";
         
     },
     mounted(){
-        this.fetchPatient();
+        this.fetchDoctor();
     }
   }
   </script>

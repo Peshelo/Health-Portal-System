@@ -3,14 +3,24 @@
 
         <!-- If user is Doctor -->
         <div v-if="doctor" class="flex flex-col w-full">
-        <SideNavDoctor class="w-full"/>
-       <Nuxt class="w-screen bg-gray-100 p-10 max-md:p-5"/>
+        <SideNavDoctor class="w-full shadow-xl"/>
+       <Nuxt class="w-screen h-screen bg-gray-100 p-10 max-md:p-5"/>
        </div>
 
        <!-- If user is Patient -->
        <div v-if="patient" class="flex flex-row w-full">
-        <SideNav class="w-1/6"/>
-       <Nuxt class="w-5/6 bg-gray-100 p-10 max-md:p-5"/>
+        <SideNav class="w-fit"/>
+    <div class="w-full">
+        <div class="mx-5 sticky text-white flex flex-row justify-between max-sm:hidden rounded-b-2xl p-5 shadow-lg bg-blue-400">
+            <h1 class="font-bold text-white">Patient Portal</h1>
+            
+            <div>
+
+            </div>
+        </div>
+        <Nuxt class=" w-full bg-gray-100 p-10 max-md:p-2"/>
+    </div>
+       
        </div>
 
        <!-- if user is Admin -->
@@ -57,5 +67,10 @@ mounted(){
 </script>
 
 <style>
-
+.sticky{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
 </style>

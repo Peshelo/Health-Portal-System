@@ -1,6 +1,7 @@
 <template>
     <div>
       <Header title="Medical History" sub="Track your medical history"/>
+      
       <MedicalHistory/>
     </div>
   </template>

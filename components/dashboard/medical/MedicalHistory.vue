@@ -6,12 +6,9 @@
         <div class="sm:flex sm:items-center sm:justify-between">
         <div>
             <div class="flex items-center gap-x-3">
-                <h2 class="text-2xl font-medium text-gray-800 dark:text-white">Medical History</h2>
-
-                <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">19 Records</span>
+                <h2 class="text-2xl font-medium text-gray-800 dark:text-white">Medical Reports</h2>
             </div>
 
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">This is the list of medical history</p>
         </div>       
     </div>
       </div>

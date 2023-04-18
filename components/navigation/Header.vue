@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <h1 class="text-3xl text-black font-medium">{{title}}</h1>
-    <label class="text-gray-300">{{sub}}</label>
+    <h1 class="text-3xl text-black font-bold">{{title}}</h1>
+    <!-- <label class="text-gray-300">{{sub}}</label> -->
 
   </div>
 </template>

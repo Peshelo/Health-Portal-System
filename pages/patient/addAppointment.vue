@@ -1,10 +1,10 @@
 <template>
-    <div class="container flex flex-col justify-center h-fit">
-      <h3 class="text-2xl mt-10 bg-gray-200 text-black py-5 px-10 border">Add Appointment</h3>
-      <form @submit.prevent="BookAppointment()" class="bg-white p-10 border" >
+    <div class="container flex flex-col justify-center h-fit bg-white">
+      <h3 class="text-2xl mt-10 text-black font-bold py-5">Add Appointment</h3>
+      <form @submit.prevent="BookAppointment()" class="bg-white p-10 border shadow-xl" >
       <p v-if="errors.ERR" class="text-red-500 text-xs bg-red-100 border border-red-500 p-3 hover:bg-red-200 hover:text-red-600 mb-5 rounded">{{ errors.ERR }}</p>
-        <div class="flex flex-row justify-between">
-          <div class="mb-3 mr-1 w-1/2">
+        <div class="flex flex-col justify-between">
+          <div class="mb-3 mr-1 w-full">
             <label class="block mb-2 text-sm text-gray-400" for="firstName">
               Doctor Specialist
             </label>
@@ -17,7 +17,7 @@
             </select>
             <!-- <p class="text-red-500 text-xs " v-if="errors.firstName">{{ errors.firstName }}</p> -->
           </div>
-          <div class="mb-3 w-1/2">
+          <div class="mb-3 w-full">
             <label class="block mb-2 text-sm text-gray-400" for="lastName">
               Doctor
             </label>
@@ -26,9 +26,7 @@
               id="firstName">
             <option selected disabled>Choose Doctor</option>
                         <option v-for="(doctor,index) in doctors"  :key="index" :value="doctor.id">Dr. {{doctor.firstname}}, {{ doctor.specialisation }}</option>
-            <!-- <option v-for="doctor in doctors" :key="doctor.id">{{doctor.firstName}}General</option>
-            <option>Neuroseugeon</option>
-            <option>Doctor Specialist</option> -->
+       
             </select>
           </div>
         </div>
@@ -82,11 +80,11 @@
           
         </div>
       </form>
-      <button @click="Pay()"
+      <!-- <button @click="Pay()"
             class="bg-blue-500 hover:bg-blue-700 mb-2  mt-5 w-full text-white py-4 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit">
             Pay
-          </button>
+          </button> -->
           
   </div>
   </template>
@@ -144,7 +142,7 @@
             description: "Payment for Appointment"
         },{
             headers: {'Content-Type': 'application/json',
-            'Authorization' : 'Bear ' + localStorage.token,
+            Authorization : 'Bearer ' + localStorage.token,
             'Accept' : '*/*',
             'Access-Control-Allow-Origin': '*'
           },
@@ -169,6 +167,10 @@ console.log("Error:",err.message)
         async BookAppointment(){
             this.loading=true;
             this.errors = {};
+            if(!this.id){
+                this.errors.id = "Select a doctor is required";
+                alert(this.errors.id)
+            }
             if(!this.date){
                 this.errors.date = "Date is required";
             }
@@ -178,7 +180,7 @@ console.log("Error:",err.message)
             if (Object.keys(this.errors).length === 0) {
        // Your code for handling the login form submission
        try{
-        await axios.post('http://localhost:8080/v1/appointments/createAppointment?doctorId=2&start=2023-07-16T13:05',{
+        await axios.post('http://localhost:8080/v1/appointments/createAppointment?doctorId='+this.id+'&start='+this.date,{
           // params:{
           //   doctorId:this.id,
           //   start:this.date
@@ -186,7 +188,7 @@ console.log("Error:",err.message)
         },{
             headers: {
             'Content-Type': 'application/json',
-            Authorization : 'Bear ' + localStorage.token,
+            Authorization : 'Bearer ' + localStorage.token,
             'Accept' : '*/*',
             'Access-Control-Allow-Origin': '*'
           },
@@ -194,6 +196,13 @@ console.log("Error:",err.message)
           }).then((response) =>{
           const data = response.data;
           console.log(data);
+          alert(data);
+          if(data==="Appointment Created"){
+            alert("Proceed to payment")
+            this.Pay();
+          }else{
+            alert("Sorry, Appointment already booked")
+          }
         }).catch(error => {
         console.log(error)
         this.errored = true

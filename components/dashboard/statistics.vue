@@ -3,7 +3,7 @@
 <div>
 	<div class="container py-3 mx-auto grid">
 		<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-			<div class="flex items-center p-4 bg-white rounded-lg shadow-xs border">
+			<div class="flex items-center p-4 bg-yellow-400 rounded-lg shadow-xs border">
 				<div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler w-7 h-7 icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -22,7 +22,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="flex items-center p-4 bg-white rounded-lg shadow-xs border">
+			<div class="flex items-center p-4 bg-green-500 rounded-lg shadow-xs border">
 				<div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler w-7 h-7 icon-tabler-calendar-time" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -43,7 +43,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="flex items-center p-4 bg-white rounded-lg shadow-xs border">
+			<div class="flex items-center p-4 bg-red-500 rounded-lg shadow-xs border">
 				<div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler w-7 h-7 icon-tabler-microscope" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -65,7 +65,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="flex items-center p-4 bg-white rounded-lg shadow-xs border">
+			<div class="flex items-center p-4 bg-orange-500 rounded-lg shadow-xs border">
 				<div
 					class="p-3 mr-4 text-yellow-500 bg-yellow-100 rounded-full">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler w-7 h-7 icon-tabler-jewish-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
