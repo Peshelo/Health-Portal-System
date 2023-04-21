@@ -239,7 +239,7 @@
   },
     async fetchDoctors(){
       console.log("Fetching Doctors from Datatables....");
-      const URL = "http://localhost:8080/v1/doctors";
+      const URL = "http://localhost:8080/v1/doctors/all";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       console.log(token);

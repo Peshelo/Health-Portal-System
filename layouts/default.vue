@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row w-full bg-gray-100">
+    <div class="flex flex-row  w-full bg-gray-100">
 
         <!-- If user is Doctor -->
         <div v-if="doctor" class="flex flex-col w-full">
@@ -10,7 +10,7 @@
        <!-- If user is Patient -->
        <div v-if="patient" class="flex flex-row w-full">
         <SideNav class="w-fit"/>
-    <div class="w-full">
+    <div class="w-full bg-gradient-to-t from-cyan-100 to-blue-100">
         <div class="mx-5 sticky text-white flex flex-row justify-between max-sm:hidden rounded-b-2xl p-5 shadow-lg bg-blue-400">
             <h1 class="font-bold text-white">Patient Portal</h1>
             
@@ -18,7 +18,7 @@
 
             </div>
         </div>
-        <Nuxt class=" w-full bg-gray-100 p-10 max-md:p-2"/>
+        <Nuxt class=" w-full p-10 max-md:p-2"/>
     </div>
        
        </div>

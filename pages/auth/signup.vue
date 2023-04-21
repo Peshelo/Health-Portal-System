@@ -4,6 +4,7 @@
         <!-- <img src="@/static/logo.png" alt="" srcset="" width="200"> -->
         <p v-if="!loading" class="mb-3 font-bold text-2xl">Signup</p>
         <p v-if="loading">Submiting...</p>
+        <img v-if="loading" src="https://i.stack.imgur.com/kOnzy.gif" alt="" srcset="" width="50px">
     <form v-else @submit.prevent="handleSubmit()" class="mt-2 p-10 w-full max-md:w-8/12  rounded-2xl flex flex-col items-center">
       <p class="py-2 px-4 bg-red-200 text-red-400 border border-red-400 rounded-lg mb-2 w-full" v-if="this.errors.ERR">Error: {{this.errors.ERR}}</p>
       
@@ -50,6 +51,7 @@ export default {
     layout:'auth',
     data(){
         return{
+            loading:false,
           firstname: "",
           lastname: "",
           email: "",

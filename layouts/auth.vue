@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-screen flex flex-col justify-between items-center text-lg">
+  <div class="h-screen bg-gradient-to-t from-cyan-500 to-blue-500 w-screen flex flex-col justify-between items-center text-lg">
      <div class="flex flex-row w-full h-full">
         <Nuxt class="h-full"/>
      </div>

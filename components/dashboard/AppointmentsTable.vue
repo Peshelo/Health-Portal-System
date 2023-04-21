@@ -357,18 +357,7 @@ console.log("Error:",err.message)
           }).then((response) =>{
           const data = response.data;
           console.log(data);
-
-          if(response.data == "User Not Found"){
-            this.errors.failed = "Wrong Login details...";
-          }else{
-            this.success="";
-            this.success = "Login Sucessful...";
-            console.log("Login Successful..")
-            // localStorage.removeItem(token);
-            localStorage.token = response.data;
-            // console.log(localStorage.token)
-            this.$router.push('/patient')
-          }
+          alert(data);
         }).catch(error => {
         console.log(error)
         this.errored = true

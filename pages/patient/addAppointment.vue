@@ -181,6 +181,7 @@ console.log("Error:",err.message)
        // Your code for handling the login form submission
        try{
         await axios.post('http://localhost:8080/v1/appointments/createAppointment?doctorId='+this.id+'&start='+this.date,{
+          description: this.description
           // params:{
           //   doctorId:this.id,
           //   start:this.date
