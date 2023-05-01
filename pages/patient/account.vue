@@ -129,7 +129,7 @@
   </div>
 </div>
 
-      <div>
+      <!-- <div>
         <form @submit.prevent="handleSubmit()" class="mt-2 p-5 flex flex-col rounded">
         <h1 class="text-lg mb-2">Personal information</h1>
       <p class="py-2 px-4 bg-red-200 text-red-400 border border-red-400 rounded mb-2 w-full" v-if="this.errors.ERR">Error: {{this.errors.ERR}}</p>
@@ -157,7 +157,7 @@
         <button @click="handleSubmit()" class="py-2 bg-[var(--primary)] text-white font-semibold rounded w-full">Update</button>
         
     </form>
-      </div>
+      </div> -->
       <!-- <Account/> -->
     </div>
   </template>
@@ -216,7 +216,7 @@ import Account from '../../components/extras/Account.vue';
         // make API call or submit form data here
         const token = localStorage.token;
         try{
-        await axios.put('http://localhost:8080/v1/update/patients/'+this.patient.id,{
+        await axios.put('https://hit200-group8.azurewebsites.net/v1/update/patients/'+this.patient.id,{
         firstName:this.patient.firstName,
         lastName:this.patient.lastName,
         email:this.patient.email,
@@ -250,7 +250,7 @@ this.errors.failed = "Sorry, an error occured!";
         async fetchPatient(){
       // console.log("Fetching Patient Data....");
       this.loading = true;
-      const URL = "http://localhost:8080/v1/patients";
+      const URL = "https://hit200-group8.azurewebsites.net/v1/patients";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       // console.log(token);

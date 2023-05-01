@@ -4,9 +4,9 @@
       <statistics/>
       <div>
     <div v-if="appointments.length < 1" class="flex flex-row p-5 justify-between bg-white border items-center rounded my-5 hover:shadow-lg ">
-      <p>No appointments to show</p>
+      <p>Appointments go here</p>
     </div>
-    <AppointmentsTable v-else :appointments="appointments"/>
+    <AppointmentsTable class="max-md:overflow-scroll" v-else :appointments="appointments"/>
   </div>
     </div>
   </template>
@@ -25,11 +25,12 @@ return{
 appointments: [],
 }
 },
+
 methods:{
   async fetchAppointments(){
     console.log("Fetching Patient Appointments Data....");
     this.loading = true;
-    const URL = "http://localhost:8080/v1/appointments/my_appointments";
+    const URL = "https://hit200-group8.azurewebsites.net/v1/appointments/my_appointments";
     const token = localStorage.token;
     // console.log('Token is string: ' + isString(token))
     // console.log(token);

@@ -1,6 +1,6 @@
 <template>
-    <div class="rounded-md mt-2">
-        
+    <div class="mt-2 bg-white p-5 rounded-lg">
+
       <div class="flex justify-between items-center mb-5">
       <div>
         <div class="sm:flex sm:items-center sm:justify-between">
@@ -30,8 +30,10 @@
             </button> -->
             <select class="p-2 bg-blue-500 text-white rounded-md" v-model="filter">
           <option value="all">All</option>
-          <option value="done">done</option>
-          <option value="pending">pending</option>
+          <option value="done">Lab result</option>
+          <option value="pending">Report</option>
+          <option value="pending">Notification</option>
+
         </select>
            
             <input class="p-2 rounded-md focus:outline-none focus:border-blue-500 border border-gray-300" type="text" v-model="search" placeholder="Search documents..." />
@@ -45,16 +47,25 @@
         </div>
            
         </div>
-      </div>
-      <table class="bg-white border p-10 rounded-md w-full text-left table-collapse">
+      </div>  
+        <h1 v-if="loading">Loading....</h1>
+
+      <table v-else class="bg-white border p-10 rounded-md w-full text-left table-collapse">
         <thead class=" bg-gray-50">
           <tr class="text-gray-500 font-thin">
             <th class="p-2 border-t border-gray-100">
-              ID
+              Record ID
             </th>
-            <th @click="sortBy('name')" class="cursor-pointer p-2 border-t border-gray-100">
-              Document
-              <span v-if="sortKey === 'name'">
+            <th @click="sortBy('doctor')" class="cursor-pointer p-2 border-t border-gray-100">
+             Doctor
+              <span v-if="sortKey === 'doctor'">
+                <template v-if="reverse">&uarr;</template>
+                <template v-else>&darr;</template>
+              </span>
+            </th>
+            <th @click="sortBy('document')" class="cursor-pointer p-2 border-t border-gray-100">
+             Document
+              <span v-if="sortKey === 'document'">
                 <template v-if="reverse">&uarr;</template>
                 <template v-else>&darr;</template>
               </span>
@@ -66,9 +77,9 @@
                 <template v-else>&darr;</template>
               </span>
             </th>
-            <th @click="sortBy('status')" class="cursor-pointer p-2 border-t border-gray-100">
-              Status
-              <span v-if="sortKey === 'status'">
+            <th @click="sortBy('type')" class="cursor-pointer p-2 border-t border-gray-100">
+              Doc Type
+              <span v-if="sortKey === 'type'">
                 <template v-if="reverse">&uarr;</template>
                 <template v-else>&darr;</template>
               </span>
@@ -81,9 +92,10 @@
         <tbody>
           <tr class="w-fit" v-for="(patient,index) in filteredPatients" :key="index">
             <td class="p-2 w-1 pt-3 text-sm border-t border-gray-100 text-gray-600">{{ index + 1 }}</td>
-            <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600">{{ patient.name }}</td>
-            <td class="p-2 w-fit pt-3 text-sm  border-t border-gray-100 text-gray-600">{{ patient.date }}</td>
-            <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600"><label class="bg-green-200 text-sm rounded-3xl border w-fit h-fit text-green-500 px-2 py-1 state">{{ patient.status }} </label></td>
+            <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600">{{ patient.doctor.firstname }} {{ patient.doctor.lastname }}</td>
+            <td class="p-2 w-fit pt-3 text-sm  border-t border-gray-100 text-gray-600">{{ patient.recordDetail }}</td>
+            <td class="p-2 w-fit pt-3 text-sm  border-t border-gray-100 text-gray-600">{{ patient.dateOfEntry.split('T')[0] }}</td>
+            <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600"><label class="bg-green-200 text-xs rounded-3xl border w-fit h-fit text-green-500 px-2 py-1 state">Lab Result </label></td>
             <td class="border-t px-2 py-1 text-left">
                 <button class="btn text-lg bg-white text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots-vertical" width="19" height="19" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -91,13 +103,13 @@
    <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
    <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
 </svg></button>
-                <button class="btn text-lg bg-white text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <button @click="downloadFile(patient.documents[0].documentURL)" class="btn text-lg bg-white text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
    <path d="M7 11l5 5l5 -5"></path>
    <path d="M12 4l0 12"></path>
 </svg></button>
-                <button class="btn text-lg bg-white text-blue-700"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="19" height="19" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <button @click="viewFile(patient.documents[0].documentURL)"  class="btn text-lg bg-white text-blue-700"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="19" height="19" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
    <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
@@ -107,7 +119,7 @@
         </tbody>
       </table>
       <div class="flex justify-between items-center mt-5">
-        <p class="text-sm">Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredPatients.length }} patients</p>
+        <p class="text-sm">Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredPatients.length }} Medical Records</p>
         <div>
           <button class="bg-blue-600 text-white rounded text-sm px-2 py-2 mr-2" @click="previousPage" :disabled="startIndex === 0">Previous</button>
           <button class="bg-blue-600 text-white rounded text-sm px-2 py-2" @click="nextPage" :disabled="endIndex === filteredPatients.length">Next</button>
@@ -118,19 +130,17 @@
   
   <script>
   export default {
+    props: {
+    medicalRecords: {
+      type: Array,
+      required: false,
+    },
+  },
    data() {
   return {
+    loading: true,
     patients: [
-     { name: 'John Doe', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'done' },
-          { name: 'Jane Doe', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'pending' },
-          { name: 'Bob Smith', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'cancelled' },
-          { name: 'Alice Johnson', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'pending' },
-          { name: 'Charlie Brown', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'done' },
-          { name: 'Eve Adams', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'pending' },
-          { name: 'Frank Jones', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'canclled' },
-          { name: 'Gina Rodriguez', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'pending' },
-          { name: 'Harry Davis', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'done' },
-          { name: 'Isabelle Wilson', date: '23/12/2023', mobile: '0771153553', time: '4:50', status: 'pending' }
+     { doctor: {firstname: '....', lastname: '....'},recordDetail: '....', dateOfEntry: '.....', date: '.....', type: '.....' },
   ],
   search: '',
   filter: 'all',
@@ -148,8 +158,11 @@
   }
   if (this.search) {
   patients = patients.filter(patient =>
-  patient.name.toLowerCase().includes(this.search.toLowerCase()) ||
-  patient.date.toLowerCase().includes(this.search.toLowerCase())
+  patient.firstname.toLowerCase().includes(this.search.toLowerCase()) ||
+  patient.lastname.toLowerCase().includes(this.search.toLowerCase()) ||
+  patient.document.toLowerCase().includes(this.search.toLowerCase()) ||
+  patient.date.toLowerCase().includes(this.search.toLowerCase()) ||
+  patient.type.toLowerCase().includes(this.search.toLowerCase())
   );
   }
   if (this.sortKey) {
@@ -184,7 +197,25 @@
   },
   previousPage() {
   this.currentPage--;
+  },
+  downloadFile(url){
+    // window.open('https://hit200-group8.azurewebsites.net/v1/records/download/'+url)
+    var link = document.createElement('a');
+link.href = 'https://hit200-group8.azurewebsites.net/v1/records/download/'+url;
+link.download = 'Health Care Medical Record.pdf';
+link.dispatchEvent(new MouseEvent('click'));
+  },
+  viewFile(url){
+    window.open('https://hit200-group8.azurewebsites.net/v1/records/download/'+url)
+//     var link = document.createElement('a');
+// link.href = 'https://hit200-group8.azurewebsites.net/v1/records/download/'+url;
+// link.download = 'Health Care Medical Record.pdf';
+// link.dispatchEvent(new MouseEvent('click'));
   }
+  },
+  mounted(){
+    this.patients = this.medicalRecords;
+    this.loading = false;
   }
   };
   </script>

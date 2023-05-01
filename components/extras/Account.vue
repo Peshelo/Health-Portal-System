@@ -98,7 +98,7 @@ export default {
             if (Object.keys(this.errors).length === 0) {
         // make API call or submit form data here
         try{
-        await axios.post('http://localhost:8080/v1/update/patients/'+this.patient.id,{
+        await axios.post('https://hit200-group8.azurewebsites.net/v1/update/patients/'+this.patient.id,{
         firstName:this.patient.firstName,
         lastName:this.patient.lastName,
         email:this.patient.email,
@@ -130,7 +130,7 @@ this.errors.failed = "Sorry, an error occured!";
         async fetchPatient(){
       // console.log("Fetching Patient Data....");
       this.loading = true;
-      const URL = "http://localhost:8080/v1/patients";
+      const URL = "https://hit200-group8.azurewebsites.net/v1/patients";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       // console.log(token);

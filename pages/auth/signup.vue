@@ -1,11 +1,11 @@
 <template>
-    <div class="flex flex-row justify-between  h-full">
-    <div class="flex flex-col justify-center items-center py-10 px-5 w-1/2 h-full">
+    <div class="flex flex-col justify-between items-center w-fit h-full">
+    <div class="flex flex-col justify-center items-center py-10 px-5 h-full">
         <!-- <img src="@/static/logo.png" alt="" srcset="" width="200"> -->
-        <p v-if="!loading" class="mb-3 font-bold text-2xl">Signup</p>
-        <p v-if="loading">Submiting...</p>
-        <img v-if="loading" src="https://i.stack.imgur.com/kOnzy.gif" alt="" srcset="" width="50px">
-    <form v-else @submit.prevent="handleSubmit()" class="mt-2 p-10 w-full max-md:w-8/12  rounded-2xl flex flex-col items-center">
+        <p v-if="!loading" class="mb-3 font-bold text-2xl text-white">Signup</p>
+        <p v-if="loading" class="text-white">Submiting...</p>
+        <img v-if="loading" src="https://i.stack.imgur.com/kOnzy.gif" alt="" srcset="" width="70px">
+    <form v-else @submit.prevent="handleSubmit()" class="mt-2 bg-white p-10 rounded-md shadow-lg w-full flex flex-col items-center">
       <p class="py-2 px-4 bg-red-200 text-red-400 border border-red-400 rounded-lg mb-2 w-full" v-if="this.errors.ERR">Error: {{this.errors.ERR}}</p>
       
       <div class="flex flex-row gap-1 w-full justify-between items-center">
@@ -32,16 +32,6 @@
         <p class="text-sm text-gray-400 mt-5">Already have an account? <a href="/auth/login" class="text-red-300">Login</a></p>
     </form>
     </div>
-    <div class="w-2/3">
-        <div class="absolute p-10 flex flex-col justify-between h-full">
-            <img src="https://campbellbirch.com/wp-content/uploads/2018/12/white_logo_transparent.png" width="200px">
-            <div class="mb-10 text-white">
-                <h1 class="text-2xl bbold text-center">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rerum consequuntur sint odit labore accusantium."</h1>
-                <p class="text-gray-300 text-center">Simple, Fast, Convinience</p>
-            </div>
-        </div>
-            <img src="https://save.org/wp-content/uploads/2016/05/about-suicide-dark-filter-.jpg" alt="wallpaper" srcset="" class="w-full h-full rounded-l-3xl object-cover">
-    </div> 
     </div>
 </template>
 
@@ -68,7 +58,7 @@ export default {
             if(!this.firstname){
                 this.errors.firstname = "Firstname is required";
             }
-            if(!this.email){
+            if(!this.lastname){
                 this.errors.lastname = "Lastname is required";
             }
             if(!this.email){
@@ -93,8 +83,9 @@ export default {
            
             if (Object.keys(this.errors).length === 0) {
         // make API call or submit form data here
+        this.loading =true;
         try{
-        await axios.post('http://localhost:8080/v1/auth/register',{
+        await axios.post('https://hit200-group8.azurewebsites.net/v1/auth/register',{
         firstname:this.firstname,
         lastname:this.lastname,
         email:this.email,
@@ -106,7 +97,7 @@ export default {
             credentials: 'include'
           }).then((response) =>{
           const data = response.data;
-          alert(response.data)
+        //   alert(response.data)
           this.response = data;
           console.log(response);
           this.$router.push('./login')

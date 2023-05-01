@@ -8,7 +8,7 @@ export default function ({ $axios }, inject) {
     formData.append('doctorId', doctorId)
     formData.append('start', start)
 
-    const response = await $axios.post('http://localhost:8080/v1/appointments/createAppointment', formData)
+    const response = await $axios.post('https://hit200-group8.azurewebsites.net/v1/appointments/createAppointment', formData)
 
     return response.data
   })

@@ -1,14 +1,15 @@
 <template>
-    <div class="flex flex-row justify-between h-full">
-    <div class="flex flex-col justify-center items-center py-10 px-5 w-1/2 h-full">
+    <div class="flex flex-col justify-center items-center w-fit h-full">
+    <div class="flex flex-col justify-center items-center py-10 px-5 h-full">
         <!-- <img src="@/static/logo.png" alt="" srcset="" width="200"> -->
-        <p v-if="!loading" class="mb-3 font-bold text-2xl">Login</p>
-        <p v-if="loading">Loading...</p>
+        <!-- <p class="mb-3 font-extrabold text-4xl text-white">HealthCare</p> -->
+        <p v-if="!loading" class="mb-3 font-bold text-2xl text-gray-100">Login</p>
+        <p  class="text-white" v-if="loading">Loading...</p>
         <img v-if="loading" src="https://i.stack.imgur.com/kOnzy.gif" alt="" srcset="" width="50px">
       
-    <form v-else @submit.prevent="handleSubmit()" class="mt-2 p-10 w-full rounded-md flex flex-col items-center">
+    <form v-else @submit.prevent="handleSubmit()" class="mt-2 p-10 w-full bg-white shadow-lg rounded-lg flex flex-col items-center">
       <p></p>
-        <p class="py-2 px-4 bg-red-200 text-red-400 border border-red-400 rounded-md mb-2 w-full" v-if="this.errors.ERR">Error: {{this.errors.ERR}}</p>
+        <p class="py-2 px-4 bg-red-400 text-red-100 border border-red-500 rounded-md mb-2 w-full" v-if="this.errors.ERR">Error: {{this.errors.ERR}}</p>
         <input type="email" v-model="email" name="email" id="" placeholder="Email" class="py-2 px-4 border rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
         <p v-if="this.errors.email" class="text-sm text-red-600 text-left mb-2">*{{this.errors.email}}</p>
         <input type="password" v-model="password" name="password" id="" placeholder="Password" class="py-2 px-4 border rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
@@ -17,16 +18,6 @@
         <p class="text-sm text-gray-400 mt-5">Do not have an account? <a href="/auth/signup" class="text-red-300">Sign up</a></p>
     </form>
     </div>
-    <div class="w-2/3">
-        <div class="absolute p-10 flex flex-col justify-between h-full">
-            <img src="https://campbellbirch.com/wp-content/uploads/2018/12/white_logo_transparent.png" width="200px">
-            <div class="mb-10 text-white">
-                <h1 class="text-2xl bbold text-center">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rerum consequuntur sint odit labore accusantium."</h1>
-                <p class="text-gray-300 text-center">Simple, Fast, Convinience</p>
-            </div>
-        </div>
-            <img src="https://save.org/wp-content/uploads/2016/05/about-suicide-dark-filter-.jpg" alt="wallpaper" srcset="" class="w-full h-full rounded-l-3xl object-cover">
-    </div> 
     </div>
 </template>
 
@@ -64,7 +55,7 @@ export default {
             if (Object.keys(this.errors).length === 0) {
        // Your code for handling the login form submission
        try{
-        await axios.post('http://localhost:8080/v1/auth/login',{
+        await axios.post('https://hit200-group8.azurewebsites.net/v1/auth/login',{
         email:this.email,
         password :this.password
         },{
@@ -94,13 +85,13 @@ export default {
             // localStorage.token = response.data;
             // console.log(localStorage.token)
             if(this.role === "PATIENT"){
-              this.$router.push('/patient')
+              this.$router.push('/patient/')
             }
             if(this.role === "DOCTOR"){
-              this.$router.push('/doctor')
+              this.$router.push('/doctor/')
             }
             if(this.role === "ADMIN"){
-              this.$router.push('/admin')
+              this.$router.push('/admin/')
 
             }
           }

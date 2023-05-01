@@ -25,7 +25,7 @@
     async fetchAppointments(){
       console.log("Fetching Patient Appointments Data....");
       this.loading = true;
-      const URL = "http://localhost:8080/v1/appointments/get-appointments";
+      const URL = "https://hit200-group8.azurewebsites.net/v1/appointments/get-appointments";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       // console.log(token);

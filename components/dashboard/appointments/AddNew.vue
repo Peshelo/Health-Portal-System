@@ -98,7 +98,7 @@
     methods:{
       fetchDoctors(){
         // console.log("Fetching Patient Data....");
-        const URL = "http://localhost:8080/v1/doctors/all";
+        const URL = "https://hit200-group8.azurewebsites.net/v1/doctors/all";
         const token = localStorage.token;
         // console.log('Token is string: ' + isString(token))
         // console.log(token);

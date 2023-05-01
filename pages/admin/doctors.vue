@@ -32,7 +32,7 @@
       async fetchDoctors(){
         console.log("Fetching  Doctors Data Completed...");
         this.loading = true;
-        const URL = "http://localhost:8080/v1/doctors/all";
+        const URL = "https://hit200-group8.azurewebsites.net/v1/doctors/all";
         const token = localStorage.token;
         console.log("this is my token: " + token);
         // console.log('Token is string: ' + isString(token))

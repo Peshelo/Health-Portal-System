@@ -29,7 +29,7 @@ methods:{
   async fetchAppointments(){
     console.log("Fetching Doctor Appointments Data....");
     this.loading = true;
-    const URL = "http://localhost:8080/v1/appointments/get_doctor_appointments";
+    const URL = "https://hit200-group8.azurewebsites.net/v1/appointments/get_doctor_appointments";
     const token = localStorage.token;
     // console.log('Token is string: ' + isString(token))
     // console.log(token);
