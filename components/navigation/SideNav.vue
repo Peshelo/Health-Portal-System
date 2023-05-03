@@ -1,6 +1,8 @@
 <template>
     <div class="h-screen rounded-r-2xl flex flex-col justify-center items-center bg-blue-500 bg-gradient-to-t side">
+
       <nav class="">
+         
       <!-- <h1 class="text-2xl text-center font-bold text-purple-300 pb-5 pt-5 max-md:hidden">HealthCare</h1> -->
       <!-- <h1 class="text-lg text-white pb-5 pt-5 max-md:hidden">Patient Portal</h1> -->
         <!-- <label class="text-yellow-300 py-3 px-2 text-sm">| General</label> -->

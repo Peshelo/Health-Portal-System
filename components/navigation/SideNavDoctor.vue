@@ -1,7 +1,8 @@
 <template>
     <div class="w-screen bg-blue-700 side">
       <nav class="flex flex-row justify-evenly">
-      <h1 class="text-2xl font-bold text-white pb-5 pt-5 max-md:hidden">HealthCare</h1>
+      <h1 class="text-2xl font-bold text-white flex flex-row items-center pb-2 pt-2 max-md:hidden">                <img src="@/assets/images/logo1.png" alt="Glass bottle with black plastic pour top and mesh insert." class="h-20 w-20 flex-none rounded-lg object-cover object-center">
+Doctor Portal</h1>
         <!-- <label class="text-yellow-300 py-3 px-2 text-sm">| General</label> -->
         <NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 rounded-t text-white font-medium text-sm hover:bg-blue-400 hover:text-white" to="/doctor/" active-class="bg-blue-300 border-b-4 text-blue-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

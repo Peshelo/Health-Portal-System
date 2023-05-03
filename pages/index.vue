@@ -5,27 +5,17 @@
   <div
     class="w-full md:max-w-6xl md:mx-auto md:flex md:items-center md:justify-between"
   >
-    <div>
-      <a href="#" class="inline-block py-2 text-gray-800 text-2xl font-bold"
-        >HealthCare Portal.</a
-      >
-    </div>
+   
     
     <div>
       <div class="hidden md:block">
-        <a
-          href="#"
-          class="inline-block py-1 md:py-4 text-gray-600 mr-6 font-bold"
-          >How it Works</a
-        >
-        <a
-          href="#"
-          class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"
-          >Solutions</a
-        >
+       <label class="text-lg font-bold">Modern Health Portal</label>
       </div>
     </div>
+ <div>
+  <img src="@/assets/images/logo3.png" alt="" class="object-contain text-center my-2" srcset="" width="150">
 
+    </div>
     <div class="md:block">
       <nuxt-link to="/auth/login"
         class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"

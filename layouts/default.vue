@@ -11,9 +11,9 @@
        <div v-if="patient" class="flex flex-row w-full">
         <SideNav class="w-fit"/>
     <div class="w-full bg-gradient-to-t from-cyan-100 to-blue-100">
-        <div class="mx-5 sticky text-white flex flex-row justify-between max-sm:hidden rounded-b-2xl p-5 shadow-lg bg-blue-400">
-            <h1 class="font-bold text-white">Patient Portal</h1>
-            
+        <div class="mx-5 sticky w-full items-center text-white flex flex-row max-sm:hidden rounded-b-2xl p-3 shadow-lg bg-blue-400">
+            <img src="@/assets/images/logo2.png" alt="" class="object-contain rounded-full text-center" srcset="" width="70">
+            <h1 class="font-bold text-white mx-6">Patient Portal</h1>
             <div>
 
             </div>

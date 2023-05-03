@@ -1,6 +1,7 @@
 <template>
   
     <div class="flex flex-col w-full h-full justify-center items-center gap-y-2">
+      <img src="@/assets/images/logo1.png" alt="" srcset="" width="200">
       <h1 class="text-4xl mmedium text-gray-100">Choose an account</h1>
       <p class="text-xs w-1/2 text-center text-white">Hello there! Thank you for choosing us. Register an account and able to find what you are looking for.</p>
       <div class="flex flex-row max-sm:flex-col max-sm:gap-y-5 gap-x-10 mt-10">

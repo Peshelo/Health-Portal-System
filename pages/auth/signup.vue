@@ -1,7 +1,6 @@
 <template>
     <div class="flex flex-col justify-between items-center w-fit h-full">
     <div class="flex flex-col justify-center items-center py-10 px-5 h-full">
-        <!-- <img src="@/static/logo.png" alt="" srcset="" width="200"> -->
         <p v-if="!loading" class="mb-3 font-bold text-2xl text-white">Patient Signup</p>
         <p v-if="loading" class="text-white">Submiting...</p>
         <img v-if="loading" src="https://i.stack.imgur.com/kOnzy.gif" alt="" srcset="" width="70px">
