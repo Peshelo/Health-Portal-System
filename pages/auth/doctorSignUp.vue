@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-between items-center w-fit h-full">
     <div class="flex flex-col justify-center items-center py-10 px-5 h-full">
         <!-- <img src="@/static/logo.png" alt="" srcset="" width="200"> -->
-        <p v-if="!loading" class="mb-3 font-bold text-2xl text-white">Patient Signup</p>
+        <p v-if="!loading" class="mb-3 font-bold text-2xl text-white">Doctor Signup</p>
         <p v-if="loading" class="text-white">Submiting...</p>
         <img v-if="loading" src="https://i.stack.imgur.com/kOnzy.gif" alt="" srcset="" width="70px">
     <form v-else @submit.prevent="handleSubmit()" class="mt-2 bg-white p-10 rounded-md shadow-lg w-full flex flex-col items-center">
@@ -24,6 +24,9 @@
         <p v-if="this.errors.mobile" class="text-sm text-red-600 text-left mb-2">*{{this.errors.mobile}}</p>
         <textarea v-model="address" name="address" id="" placeholder="Address" class="py-2 px-1 border-b border-gray-300 text-sm duration-200 mb-2 w-full focus:outline-none focus:border-b-[var(--secondary)]"></textarea>
         <p v-if="this.errors.address" class="text-sm text-red-600 text-left mb-2">*{{this.errors.adress}}</p>
+        <input type="text" v-model="specialisation" name="specialisation" id="" placeholder="Specialisation" class="py-2 px-1 border-b border-gray-300 text-sm duration-200 mb-2 w-full focus:outline-none focus:border-b-[var(--secondary)]">
+        <p v-if="this.errors.specialisation" class="text-sm text-red-600 text-left mb-2">*{{this.errors.specialisation}}</p>
+
         <input type="password" v-model="password" name="password" id="" placeholder="Password" class="py-2 px-1 border-b border-gray-300 text-sm duration-200 mb-2 w-full focus:outline-none focus:border-b-[var(--secondary)]">
         <p v-if="this.errors.password" class="text-sm text-red-600 text-left mb-2">*{{this.errors.password}}</p>
         <input type="password" v-model="Confirmpassword" name="Confirmpassword" id="" placeholder="Re-enter Password" class="py-2 px-1 border-b border-gray-300 text-sm duration-200 mb-2 w-full focus:outline-none focus:border-b-[var(--secondary)]">
@@ -46,6 +49,7 @@ export default {
           lastname: "",
           email: "",
           mobile: "",
+          specialisation:"",
           address: "",
           password: "",
           Confirmpassword: "",
@@ -63,6 +67,9 @@ export default {
             }
             if(!this.email){
                 this.errors.email = "Email is required";
+            }
+            if(!this.specialisation){
+                this.errors.specialisation = "Email is required";
             }
             if(!this.mobile){
                 this.errors.mobile = "Mobile number is required";
@@ -85,11 +92,12 @@ export default {
         // make API call or submit form data here
         this.loading =true;
         try{
-        await axios.post('http://localhost:8080/v1/auth/register',{
+        await axios.post('http://localhost:8080/v1/auth/register-doc',{
         firstname:this.firstname,
         lastname:this.lastname,
         email:this.email,
         mobile:this.mobile,
+        specialisation:this.specialisation,
         address:this.address,
         password :this.password
         },{
@@ -97,7 +105,6 @@ export default {
             credentials: 'include'
           }).then((response) =>{
           const data = response.data;
-   
         //   alert(response.data)
           this.response = data;
           console.log(response);

@@ -32,7 +32,7 @@
         >Login</nuxt-link
       >
       <nuxt-link
-        to="/auth/signup"
+        to="/auth/"
         class="inline-block py-2 px-4 text-gray-700 bg-white hover:bg-gray-100 rounded-lg"
         >SignUp</nuxt-link
       >    </div>

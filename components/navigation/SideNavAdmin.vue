@@ -20,7 +20,7 @@
    <path d="M3 11h16"></path>
    <path d="M18 16.496v1.504l1 1"></path>
 </svg></label><label class="max-md:hidden">All Appointments</label></NuxtLink>
-        <NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 mb-2 rounded text-white font-medium text-sm hover:bg-red-400 hover:text-white"  to="/admin/medicalHistory" active-class="bg-red-300  text-red-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report-medical" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 mb-2 rounded text-white font-medium text-sm hover:bg-red-400 hover:text-white"  to="/admin/medical" active-class="bg-red-300  text-red-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report-medical" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
    <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
@@ -40,12 +40,17 @@
    <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5"></path>
 </svg></label><label class="max-md:hidden">User Billing Information</label></NuxtLink>
 
-        <NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 rounded text-white font-medium text-sm hover:bg-red-400 hover:text-white" to="/admin/account" active-class="bg-red-300  text-red-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 rounded text-white font-medium text-sm hover:bg-red-400 hover:text-white" to="/admin/patients" active-class="bg-red-300  text-red-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-</svg></label><label class="max-md:hidden">My Account</label></NuxtLink>
-        <NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 rounded text-white font-medium text-sm hover:bg-red-400 hover:text-white" to="/admin/settings" active-class="bg-red-300  text-red-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+</svg></label><label class="max-md:hidden">Patients</label></NuxtLink>
+<NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 rounded text-white font-medium text-sm hover:bg-red-400 hover:text-white" to="/admin/doctors" active-class="bg-red-300  text-red-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+   <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+</svg></label><label class="max-md:hidden">Doctors</label></NuxtLink>
+        <NuxtLink class="flex flew-row items-center mt-2 py-3 px-5 rounded text-white font-medium text-sm hover:bg-red-400 hover:text-white" to="/admin/patients" active-class="bg-red-300  text-red-700"><label class="text-xl mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
@@ -63,9 +68,24 @@
    export default{
       methods:{
 logout(){
-   alert("logout")
+   const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'New Doctor Created'
+})
    localStorage.token = "";
-   this.$router.push("/admin/");
+   this.$router.push("/login");
 localStorage.removeItem(token);
 
 }

@@ -28,7 +28,7 @@ export default {
         async fetchPatients(){
       // console.log("Fetching Patient Data....");
       this.loading = true;
-      const URL = "https://hit200-group8.azurewebsites.net/v1/patients/all";
+      const URL = "http://localhost:8080/v1/patients/all";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       // console.log(token);

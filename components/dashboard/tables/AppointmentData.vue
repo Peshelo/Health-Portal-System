@@ -162,7 +162,7 @@
    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
 </svg></button>
-                <button v-if="role !== 'PATIENT'" @click="modal = true" class="btn text-lg bg-white text-blue-700"><svg @click="setFigures(patient.id,patient.patient.id)" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="19" height="19" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <button v-if="role !== 'PATIENT'" @click="modal = true" class="btn text-lg bg-white text-blue-700"><svg @click="this.patientId=patient.id" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="19" height="19" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
    <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
@@ -219,33 +219,27 @@
             </div>
             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
               <div class="flex flex-row gap-1"> <input type="number" v-model="temperature" name="temperature" id="" placeholder="Recorded Temparature" class="py-2 px-4 border border-blue-300 rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-                <p v-if="this.errors.temperature" class="text-sm text-red-600 text-left mb-2">*{{this.errors.temparature}}</p>
-
-                <input type="number" v-model="bp" name="bp" id="" placeholder="Blood Pressure" class="py-2 px-4 border border-blue-300 rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] "></div>
-              <p v-if="this.errors.bp" class="text-sm text-red-600 text-left mb-2">*{{this.errors.bp}}</p>
-
-              <div class="flex flex-row flex-wrap w-full gap-2 my-3">
+              <input type="number" v-model="bp" name="bp" id="" placeholder="Blood Pressure" class="py-2 px-4 border border-blue-300 rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] "></div>
+             <div class="flex flex-row flex-wrap w-full gap-2 my-3">
               <div class="flex flex-row items-center gap-1">
-              <input v-model="hivStatus" type="checkbox" name="Vacination" id="vacination">
-              <label class="text-sm" for="vacination">Hiv Positive</label>
+              <input type="checkbox" name="Vacination" id="vacination">
+              <label class="text-sm" for="vacination">Covid 19 Vacination</label>
               </div>
               <div class="flex flex-row items-center gap-1">
               <input type="checkbox" name="Vacination" id="vacination">
               <label class="text-sm" for="vacination">Covid 19 Vacination</label>
               </div> 
              </div>
-              <textarea v-model="description" class="py-2 px-4 border border-blue-300 rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] " placeholder="Prescription Drugs"></textarea>
-              <p v-if="this.errors.description" class="text-sm text-red-600 text-left mb-2">*{{this.errors.description}}</p>
-
+              <textarea class="py-2 px-4 border border-blue-300 rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] " placeholder="Prescription Drugs"></textarea>
             </div>
-            <!-- <div class="mt-3 flex flex-col gap-2 text-center sm:ml-4 sm:mt-0 sm:text-left">
+            <div class="mt-3 flex flex-col gap-2 text-center sm:ml-4 sm:mt-0 sm:text-left">
               <label>Attach file below:</label>
               <input @change="handleFileChange" type="file" name="file" id="" placeholder="Record File" class="py-2 px-4 border border-blue-300 rounded-md mb-2 w-full focus:outline-none focus:border-[var(--secondary)] ">
-            </div> -->
+            </div>
           </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-          <button @click="addAppointmentData(10,1)" type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Record</button>
+          <button type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Record</button>
           <button @click="modal = false" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
         </div>
       </div>
@@ -275,12 +269,8 @@
   return {
     file:[],
     recordDetails:'',
-    temperature:'',
-    bp:'',
-    hivStatus:false,
     patientId:'',
-    appointmentId:'',
-    description:'',
+    temparature:'',
     modal:false,
     loading: true,
     count:0,
@@ -448,11 +438,6 @@ console.log("Error:",err.message)
 
 }
   },
-  setFigures(appointmentId,patientId){
-    // alert("Setting"+ appointmentId + patientId)
-      this.appointmentId = appointmentId;
-      this.patientId =patientId;
-  },
   async DeleteRecord(id){
     try{
         await axios.delete('http://localhost:8080/v1/appointments/delete/'+id,{
@@ -486,15 +471,14 @@ console.log("Error:",err.message)
     window.location.href = 'tel://' + mobileNumber;
   },
   async addAppointmentData(id,patient){
-  
             this.loading=true;
             this.errors = {};
-            if(!this.temperature){
-                this.errors.temperature = "Temperature is required";
-                // alert(this.errors.id)
+            if(!this.id){
+                this.errors.id = "Select a doctor is required";
+                alert(this.errors.id)
             }
-            if(!this.bp){
-                this.errors.bp = "Blood Pressure is required";
+            if(!this.date){
+                this.errors.date = "Date is required";
             }
             if(!this.description){
                 this.errors.description = "Description is required";
@@ -503,10 +487,6 @@ console.log("Error:",err.message)
        // Your code for handling the login form submission
        try{
         await axios.post('http://localhost:8080/v1/appointments_data/create?patientId='+patient,{
-          temperature: this.temparature,
-          bp: this.bp,
-          prescription:this.description,
-          hasHIV:this.hivStatus,
           appointment: {id:id}
           // params:{
           //   doctorId:this.id,
@@ -524,7 +504,7 @@ console.log("Error:",err.message)
           const data = response.data;
           console.log(data);
           alert(data);
-          // this.uploadFile();
+          this.uploadFile();
         }).catch(error => {
         console.log(error)
         this.errored = true
@@ -584,66 +564,64 @@ console.log("Error:",err.message)
 }
       }
         },
-        async addAppointmentData(id,patient){
-            this.loading=true;
-            this.errors = {};
-            if(!this.temperature){
-                this.errors.id = "Select a doctor is required";
-                alert(this.errors.id)
-            }
-            if(!this.date){
-                this.errors.date = "Date is required";
-            }
-            if(!this.description){
-                this.errors.description = "Description is required";
-            }
-            if (Object.keys(this.errors).length === 0) {
-       // Your code for handling the login form submission
-       try{
-        await axios.post('http://localhost:8080/v1/appointments_data/create?patientId='+patient,{
-          appointment: {id:id}
-          // params:{
-          //   doctorId:this.id,
-          //   start:this.date
-          // }
-        },{
-            headers: {
-            'Content-Type': 'application/json',
-            Authorization : 'Bearer ' + localStorage.token,
-            'Accept' : '*/*',
-            'Access-Control-Allow-Origin': '*'
-          },
-            credentials: 'include',
-          }).then((response) =>{
-          const data = response.data;
-          console.log(data);
-          alert(data);
-          this.uploadFile();
-        }).catch(error => {
-        console.log(error)
-        this.errored = true
-        this.errors.ERR=error
-        
-      }).finally(() => this.loading = false);
-
-}catch(err){
-  this.errors.network = "Error: " + err.message;
-  this.errors.ERR = err;
-console.log("Error:",err.message)
-
-}
-      }
-        },
         handleFileChange(event) {
       this.file = event.target.files[0]
       console.log(this.file)
     },
+    async postAppointmentData(){
+            this.errors = {};
+            if(!this.temparature){
+                this.errors.temparature = "Temparature is required";
+            }
+            if(!this.bp){
+                this.errors.bp = "Blood Pressure is required";
+            }
+            if(!this.description){
+                this.errors.description = "Description is required";
+            }
+           
+            if (Object.keys(this.errors).length === 0) {
+        // make API call or submit form data here
+        const token = localStorage.token;
+        try{
+        await axios.put('http://localhost:8080/v1/appointments_data/create?patientId='+this.patient.id,{
+        firstName:this.patient.firstName,
+        lastName:this.patient.lastName,
+        email:this.patient.email,
+        mobile:this.patient.mobile,
+        address:this.patient.address,
+        password :this.patient.password,
+        role :"Patient"
+        },{
+        headers: {'Content-Type': 'application/json',
+            Authorization : 'Bearer ' + token,
+            'Access-Control-Allow-Origin': '*'}
+      }).then((response) =>{
+          const data = response.data;
+          this.response = data;
+          console.log(response);
+          this.$router.push('./login')
+          // if(this.response === "User Not Found"){
+          //   this.errors.failed = "Wrong Login details.";
+          // }else{
+            
+          // }
+        })
+
+}catch(err){
+console.log("Error:",err)
+this.errors.failed = "Sorry, an error occured!";
+}
+        console.log("Form submitted successfully");
+      }
+        },
     },
   mounted(){
     this.role = localStorage.role;
     this.patients = this.appointments;
     this.loading=false;
     console.warn("Current Data:" + this.patients)
+    
   }
   };
   </script>

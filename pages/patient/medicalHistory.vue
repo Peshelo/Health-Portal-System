@@ -25,7 +25,7 @@ import MedicalHistory from '../../components/dashboard/medical/MedicalHistory.vu
     async fetchMedicalHistory(){
       // console.log("Fetching medicalDocs Data....");
       this.loading = true;
-      const URL = "https://hit200-group8.azurewebsites.net/v1/records/sorted_by_recent";
+      const URL = "http://localhost:8080/v1/records/sorted_by_recent";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       // console.log(token);

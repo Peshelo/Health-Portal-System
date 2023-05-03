@@ -25,7 +25,7 @@ methods:{
   async fetchMedicalHistory(){
     // console.log("Fetching medicalDocs Data....");
     this.loading = true;
-    const URL = "https://hit200-group8.azurewebsites.net/v1/records/doctor/all";
+    const URL = "http://localhost:8080/v1/records/doctor";
     const token = localStorage.token;
     // console.log('Token is string: ' + isString(token))
     // console.log(token);

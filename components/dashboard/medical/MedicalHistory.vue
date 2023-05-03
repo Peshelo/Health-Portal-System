@@ -95,7 +95,7 @@
             <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600">{{ patient.doctor.firstname }} {{ patient.doctor.lastname }}</td>
             <td class="p-2 w-fit pt-3 text-sm  border-t border-gray-100 text-gray-600">{{ patient.recordDetail }}</td>
             <td class="p-2 w-fit pt-3 text-sm  border-t border-gray-100 text-gray-600">{{ patient.dateOfEntry.split('T')[0] }}</td>
-            <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600"><label class="bg-green-200 text-xs rounded-3xl border w-fit h-fit text-green-500 px-2 py-1 state">Lab Result </label></td>
+            <td class="p-2 pt-3 text-sm border-t border-gray-100 text-gray-600"><label class="bg-green-200 text-xs rounded-3xl border w-fit h-fit text-green-500 px-2 py-1 state">file</label></td>
             <td class="border-t px-2 py-1 text-left">
                 <button class="btn text-lg bg-white text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots-vertical" width="19" height="19" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -199,16 +199,16 @@
   this.currentPage--;
   },
   downloadFile(url){
-    // window.open('https://hit200-group8.azurewebsites.net/v1/records/download/'+url)
+    // window.open('http://localhost:8080/v1/records/download/'+url)
     var link = document.createElement('a');
-link.href = 'https://hit200-group8.azurewebsites.net/v1/records/download/'+url;
+link.href = 'http://localhost:8080/v1/records/download/'+url;
 link.download = 'Health Care Medical Record.pdf';
 link.dispatchEvent(new MouseEvent('click'));
   },
   viewFile(url){
-    window.open('https://hit200-group8.azurewebsites.net/v1/records/download/'+url)
+    window.open('http://localhost:8080/v1/records/download/'+url)
 //     var link = document.createElement('a');
-// link.href = 'https://hit200-group8.azurewebsites.net/v1/records/download/'+url;
+// link.href = 'http://localhost:8080/v1/records/download/'+url;
 // link.download = 'Health Care Medical Record.pdf';
 // link.dispatchEvent(new MouseEvent('click'));
   }

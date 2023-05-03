@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center w-fit h-full">
     <div class="flex flex-col justify-center items-center py-10 px-5 h-full">
-        <!-- <img src="@/static/logo.png" alt="" srcset="" width="200"> -->
+        <img src="@/assets/images/logo1.png" alt="" srcset="" width="200">
         <!-- <p class="mb-3 font-extrabold text-4xl text-white">HealthCare</p> -->
         <p v-if="!loading" class="mb-3 font-bold text-2xl text-gray-100">Login</p>
         <p  class="text-white" v-if="loading">Loading...</p>
@@ -55,7 +55,7 @@ export default {
             if (Object.keys(this.errors).length === 0) {
        // Your code for handling the login form submission
        try{
-        await axios.post('https://hit200-group8.azurewebsites.net/v1/auth/login',{
+        await axios.post('http://localhost:8080/v1/auth/login',{
         email:this.email,
         password :this.password
         },{
@@ -105,8 +105,8 @@ export default {
 }catch(err){
   this.errors.network = "Error: " + err.message;
   this.errors.ERR = err;
-console.log("Error:",err.message)
-
+console.log("Error:",err.message);
+this.loading=false;
 }
       }
         }

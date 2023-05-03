@@ -190,7 +190,7 @@ import Account from '../../components/extras/Account.vue';
         // make API call or submit form data here
         const token = localStorage.token;
         try{
-        await axios.put('https://hit200-group8.azurewebsites.net/v1/doctor/update/'+this.doctor.id,{
+        await axios.put('http://localhost:8080/v1/doctor/update/'+this.doctor.id,{
         firstName:this.doctor.firstName,
         lastName:this.doctor.lastName,
         email:this.doctor.email,
@@ -223,7 +223,7 @@ this.errors.failed = "Sorry, an error occured!";
         async fetchDoctor(){
       // console.log("Fetching doctor Data....");
       this.loading = true;
-      const URL = "https://hit200-group8.azurewebsites.net/v1/doctors";
+      const URL = "http://localhost:8080/v1/doctors";
       const token = localStorage.token;
       // console.log('Token is string: ' + isString(token))
       // console.log(token);
