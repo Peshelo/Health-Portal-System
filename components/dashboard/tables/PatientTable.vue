@@ -369,7 +369,23 @@ async uploadFile(id){
 
             // var contenttype = _ctx.IncomingRequest.Headers["Content-Type"].ToString();
             // var boundary = contenttype.Substring(contenttype.indexOf('=')+1);
+            const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-start',
+  showConfirmButton: false,
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
 
+Toast.fire({
+  icon: 'success',
+  title: 'File Uploaded Succesfully.'
+})
+this.modal=false;
      // Your code for handling the login form submission
      try{
       await axios.post('http://localhost:8080/v1/records/upload', formData, {

@@ -3,6 +3,26 @@
       <h3 class="text-2xl mt-10 text-black font-bold py-5">Add Appointment</h3>
       <h1 v-if="loading || paying" class="w-full p-10 my-2 rounded-lg bg-white animate-pulse text-black text-center">Processing Request...
       <br><a v-if="link !== null" :href="this.link" class="text-blue-400 underlined">Click here if it takes longer</a>
+      <div class="my-2">
+        <ShareNetwork
+        v-if="link !== null"
+          class="text-gray-400"
+            network="whatsapp"
+            :url="this.link"
+            :title="'Share Payment Link On Whatsapp'"
+            :description="'Share Payment Link On Whatsapp'"
+            hashtags="modernhealth,paypal,share,whatsapp">
+            <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-share" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M8.7 10.7l6.6 -3.4"></path>
+   <path d="M8.7 13.3l6.6 3.4"></path>
+</svg>
+  </span>
+        </ShareNetwork>
+      </div>
       </h1>
       <img v-if="loading || paying" src="https://i.stack.imgur.com/kOnzy.gif" alt="" srcset="" width="50px">
       <form v-else @submit.prevent="BookAppointment()" class="bg-white w-1/2 p-10 border shadow-xl" >
@@ -218,10 +238,11 @@
       },
       fetchBookedAppointments(){
         // console.log("Fetching Patient Data....");
-        const URL = "http://localhost:8080/v1/appointments/get-booked-slots?doctorId=2&date="+this.date;
+        const URL = "http://localhost:8080/v1/appointments/get-booked-slots?doctorId="+this.id+"&date="+this.date;
         const token = localStorage.token;
         // console.log('Token is string: ' + isString(token))
         // console.log(token);
+        // alert(this.id);
         axios.get(URL,{
           headers: {'Content-Type': 'application/json',
               Authorization : 'Bearer ' + token,
@@ -229,9 +250,10 @@
         }).then((res) =>
          {
           this.bookedAppointment = res.data;
-          this.filterSlot();
-          console.log(this.bookedAppointment);
+          
+          console.log("Booked:" + this.bookedAppointment);
           console.log(typeof(this.bookedAppointment))
+          this.filterSlot();
           console.log("Fetching  Appointment Data Completed...");
         }) .catch(error => {
           console.log(error.code)
@@ -281,7 +303,7 @@ console.log("Error:",err.message)
       }
        }
        if(this.method==="PayNow"){
-        alert("Requesting PayNow...")
+        // alert("Requesting PayNow...")
         try{
         this.loading=true;
         await axios.post('http://localhost:8080/api/paynow/web?invoiceNumber=1454&price=50&purpose=Sale',{
@@ -356,7 +378,7 @@ console.log("Error:",err.message)
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 7000,
+  timer: 1000,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -366,9 +388,9 @@ console.log("Error:",err.message)
 
 Toast.fire({
   icon: 'success',
-  title: 'Appointment Created Succesfully'
+  title: 'Created Succesfully. Proceeding to Payment'
 })
-            alert("Proceed to payment")
+            // alert("Proceed to payment")
             this.Pay();
           }else{
             const Toast = Swal.mixin({

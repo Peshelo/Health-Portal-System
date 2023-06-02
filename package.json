@@ -17,6 +17,7 @@
     "sweetalert2": "^11.7.2",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
+    "vue-social-sharing": "^3.0.9",
     "vue-template-compiler": "^2.7.10"
   },
   "devDependencies": {
